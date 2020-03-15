@@ -41,21 +41,20 @@
                 alert('수량을 입력해주세요')
                 $('#orderCount').focus()
                 return
-            } else if (address == '') {
-                alert('주소를 입력해주세요')
-                $('#orderAddress').focus()
-                return
             } else if (phone == '') {
                 alert('휴대폰번호를 입력해주세요')
                 $('#orderPhone').focus()
                 return
             } else if (!isCellPhone(phone)) {
                 alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
+                return        
+            } else if (address == '') {
+                alert('주소를 입력해주세요')
+                $('#orderAddress').focus()
                 return
+            } else if (name != '' && count != '' && phone != '' && address != '') {
+                alert('주문완료!')
             }
-        }
-        function complete() {
-
         }
     </script>
 
