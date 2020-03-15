@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <title>나홀로 쇼핑몰</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,6 +21,45 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 
+    <script>
+        function isCellPhone(p) {
+            var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+            return regExp.test(p);
+        }
+
+        function order() {
+            let name = $('#orderName').val();
+            let count = $('#orderCount').val();
+            let address = $('#orderAddress').val();
+            let phone = $('#orderPhone').val();
+        
+            if (name == '') {
+                alert('이름을 입력해주세요')
+                $('#orderName').focus()
+                return
+            } else if (count == 'Choose...') {
+                alert('수량을 입력해주세요')
+                $('#orderCount').focus()
+                return
+            } else if (address == '') {
+                alert('주소를 입력해주세요')
+                $('#orderAddress').focus()
+                return
+            } else if (phone == '') {
+                alert('휴대폰번호를 입력해주세요')
+                $('#orderPhone').focus()
+                return
+            } else if (!isCellPhone(phone)) {
+                alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해주세요')
+                return
+            }
+        }
+        function complete() {
+
+        }
+    </script>
+
+    <!-- CSS -->
     <style>
         .mytitle {
             color: white;
@@ -63,48 +104,48 @@
             <h1>신선한 공기를 팔아요</h1>
             가격: 5,000원/병
             <br>
-            5천년 동안 사람의 손길이 닿지않은 깊은 숲속의 신선한 공기를 필고 있습니다. 어린이 아토피 치료에 탁월한 효과를 보이고 있습니다.
-            하루에 1병이면 충분합니다. 1병에 1리터가 담겨있습니다.
+            5천년 동안 사람의 손길이 닿지않은 깊은 숲속의 신선한 공기를 팔고 있습니다. 어린이 아토피 치료에 탁월한 효과를 보이고 있습니다.
+            1병에 1리터가 담겨있습니다. 한번 써보세요. 하루에 1병이면 충분합니다.
         </p>
         <p>
             <h1>주문하기</h1>
         </p>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">주문자 이름</span>
+                <span class="input-group-text">주문자 이름</span>
             </div>
             <input type="text" class="form-control" placeholder="name" aria-label="name"
-                aria-describedby="basic-addon1">
+                id="orderName">
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                <label class="input-group-text" for="orderCount">수량</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="orderCount">
                 <option selected>Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="4">Four</option>
-                <option value="5">Five</option>
+                <script>
+                        for (let i = 1; i < 11; i++) {
+                            document.write("<option>"+i+"</option>")
+                        }
+                </script>
             </select>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">전화번호</span>
+                <span class="input-group-text">전화번호</span>
             </div>
             <input type="text" class="form-control" placeholder="phone number" aria-label="phone number"
-                aria-describedby="basic-addon1">
+                id="orderPhone">
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">주소</span>
+                <span class="input-group-text">주소</span>
             </div>
             <input type="text" class="form-control" placeholder="address" aria-label="address"
-                aria-describedby="basic-addon1">
+                id="orderAddress">
         </div>
         <div class="buttonmargin">
-            <button type="button" class="btn btn-primary">주문하기</button>
+            <button type="button" class="btn btn-primary" onclick="order()">주문하기</button>
         </div>
 
     </div>
