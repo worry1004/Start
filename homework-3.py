@@ -22,8 +22,8 @@ musicSum = soup.select('#body-content > div.newest-list > div > table > tbody > 
 
 rank = 1
 for music in musicSum:
-    title = music.select_one('a.title.ellipsis').text
-    artist = music.select_one('a.artist.ellipsis').text
-    print(rank, title, artist)
+    title = music.select_one('a.title.ellipsis').text.strip()
+    artist = music.select_one('a.artist.ellipsis').text.strip()
+    print(rank, title,':', artist)
     rank += 1
 
